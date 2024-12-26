@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: email-sender-service
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health
+          - prometheus
+  endpoint:
+    health:
+      show-details: always
+  health:
+    probes:
+      enabled: true
+
+rabbitmq:
+  inbound:
+    broker-url: rabbitmq.default.svc.cluster.local:5672 #localhost:5672
+    user: admin
+    password: admin123
+
+notifications:
+  email:
+    main-exchange: notif-sys
+    dl-exchange: notif-sys.dlx
+    main-queue-routing-key: notif-sys-email
+    dlq-routing-key: notif-sys-dlq
+
+logging:
+  level:
+    ROOT: info
+    com.rabbitmq: debug
+    org.springframework.amqp: debug

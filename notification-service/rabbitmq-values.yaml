@@ -1,0 +1,18 @@
+persistence:
+  size: "2Gi"
+
+metrics:
+  enabled: true
+  serviceMonitor:
+    labels:
+      monitor-enabled: "true"
+    default:
+      enabled: true
+    detailed:
+      enabled: true
+      family: ["queue_coarse_metrics"]
+
+auth:
+  username: admin
+  password: admin123
+  updatePassword: true

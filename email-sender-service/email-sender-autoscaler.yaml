@@ -1,0 +1,18 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: email-sender-scaledobject
+  namespace: default
+spec:
+  minReplicaCount:  2
+  maxReplicaCount:  6
+  scaleTargetRef:
+    name: email-sender-svc-deploy
+  triggers:
+    - type: prometheus
+      metadata:
+        serverAddress: http://prometheus-kube-prometheus-prometheus.default.svc.cluster.local:9090
+        metric_name: email_notif_queue_length
+        query: rabbitmq_detailed_queue_messages{namespace="default",queue="notif-sys-email"}
+        threshold: "100"
+        activationThreshold: "50"

@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: email-sender-servicemonitor
+  namespace: default
+  labels:
+    monitor-enabled: "true"
+spec:
+  endpoints:
+    - interval: 15s
+      port: svc-port
+      scrapeTimeout: 14s
+      path: "/actuator/prometheus"
+  namespaceSelector:
+    matchNames:
+      - default
+  selector:
+    matchLabels:
+      app: email-sender-clusterip
