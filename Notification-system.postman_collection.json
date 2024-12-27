@@ -1,0 +1,78 @@
+{
+	"info": {
+		"_postman_id": "bd585992-ee67-4c20-a444-ab1156fc611d",
+		"name": "Notification-system",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7779615"
+	},
+	"item": [
+		{
+			"name": "send-email-notification",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"to\": \"cpande91@gmail.com\",\r\n    \"body\": \"email notification test message\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:30242/api/v1/send/email",
+					"host": [
+						"localhost"
+					],
+					"port": "30242",
+					"path": [
+						"api",
+						"v1",
+						"send",
+						"email"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "health-check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:30242/actuator/health",
+					"host": [
+						"localhost"
+					],
+					"port": "30242",
+					"path": [
+						"actuator",
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "prometheus",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:30242/actuator/prometheus",
+					"host": [
+						"localhost"
+					],
+					"port": "30242",
+					"path": [
+						"actuator",
+						"prometheus"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
